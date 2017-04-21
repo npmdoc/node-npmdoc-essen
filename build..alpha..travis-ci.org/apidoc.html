@@ -1,0 +1,314 @@
+<div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a
+
+        href="https://github.com/externuz/essen#readme"
+
+    >essen (v0.3.19)</a>
+</h1>
+<h4>Minimalistic nodejs MVC framework</h4>
+<div class="apidocSectionDiv"><a
+    href="#apidoc.tableOfContents"
+    id="apidoc.tableOfContents"
+><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.essen">module essen</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.essen.essen">
+            function <span class="apidocSignatureSpan"></span>essen
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">essen.</span>IndexController</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">essen.</span>bookService</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">essen.</span>bootstrap</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.essen.IndexController">module essen.IndexController</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.essen.IndexController.index">
+            function <span class="apidocSignatureSpan">essen.IndexController.</span>index
+            <span class="apidocSignatureSpan">(req, res)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.essen.bookService">module essen.bookService</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.essen.bookService.getBooks">
+            function <span class="apidocSignatureSpan">essen.bookService.</span>getBooks
+            <span class="apidocSignatureSpan">(cb)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.essen.bootstrap">module essen.bootstrap</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.essen.bootstrap.afterStart">
+            function <span class="apidocSignatureSpan">essen.bootstrap.</span>afterStart
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.essen.bootstrap.beforeStart">
+            function <span class="apidocSignatureSpan">essen.bootstrap.</span>beforeStart
+            <span class="apidocSignatureSpan">(next)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.essen" id="apidoc.module.essen">module essen</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.essen.essen" id="apidoc.element.essen.essen">
+        function <span class="apidocSignatureSpan"></span>essen
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">class ECore {
+  static start() {
+    EPlugins.init()
+    .then(EConfigurator.init)
+    .then(EMiddleware.init)
+    .then(EORM.init)
+    .then(EServiceman.init)
+    .then(EBootstrap.init)
+    .then(ERouter.init)
+    .then(EServer.start)
+    .catch(err =&#x3e; {
+      log.error(err)
+      return process.exit(1)
+    })
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.essen.IndexController" id="apidoc.module.essen.IndexController">module essen.IndexController</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.essen.IndexController.index" id="apidoc.element.essen.IndexController.index">
+        function <span class="apidocSignatureSpan">essen.IndexController.</span>index
+        <span class="apidocSignatureSpan">(req, res)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">index(req, res) {
+  bookService.getBooks((err, books) =&#x3e; {
+    if (err) return res.status(500).json({ err })
+    res.json({ books, msg: &#x27;Here we have some books&#x27; })
+  })
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.essen.bookService" id="apidoc.module.essen.bookService">module essen.bookService</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.essen.bookService.getBooks" id="apidoc.element.essen.bookService.getBooks">
+        function <span class="apidocSignatureSpan">essen.bookService.</span>getBooks
+        <span class="apidocSignatureSpan">(cb)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">getBooks(cb) {
+  Book
+  .find({})
+  .exec((err, db_books) =&#x3e; {
+    if (err) return cb(err)
+    return cb(null, db_books)
+  })
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+
+
+
+
+module.exports = {
+  index(req, res) {
+    bookService.<span class="apidocCodeKeywordSpan">getBooks</span>((err, books) =&#x3e; {
+      if (err) return res.status(500).json({ err })
+      res.json({ books, msg: &#x27;Here we have some books&#x27; })
+    })
+  }
+}
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.essen.bootstrap" id="apidoc.module.essen.bootstrap">module essen.bootstrap</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.essen.bootstrap.afterStart" id="apidoc.element.essen.bootstrap.afterStart">
+        function <span class="apidocSignatureSpan">essen.bootstrap.</span>afterStart
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">afterStart() {
+
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+      essen.io = require(&#x27;socket.io&#x27;)(server)
+    }
+    return new Promise((resolve, reject) =&#x3e; {
+      server.listen(process.env.PORT || essen.config.server.port, err =&#x3e; {
+        if (err) reject(`start server error ${err}`)
+        log.info(`${essen.config.server.name} listening on port ${process.env.PORT || essen.config.server.port}`)
+        log.info(`using db ${essen.config.db.name} at ${essen.config.db.host}`)
+        if (essen.afterStart) essen.<span class="apidocCodeKeywordSpan">afterStart</span>()
+        resolve()
+      })
+    })
+  }
+}
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.essen.bootstrap.beforeStart" id="apidoc.element.essen.bootstrap.beforeStart">
+        function <span class="apidocSignatureSpan">essen.bootstrap.</span>beforeStart
+        <span class="apidocSignatureSpan">(next)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">beforeStart(next) {
+  next()
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+module.exports = class EBootstrap {
+static init(cb) {
+  return new Promise((resolve, reject) =&#x3e; {
+    try {
+      const config_path = path.join(essen.config.path, &#x27;config/bootstrap.js&#x27;)
+      const bootstrap = require(config_path)
+      if (bootstrap &#x26;&#x26; bootstrap.beforeStart) {
+        bootstrap.<span class="apidocCodeKeywordSpan">beforeStart</span>(err =&#x3e; {
+          if (bootstrap.afterStart) {
+            essen.afterStart = bootstrap.afterStart
+            return resolve()
+          } else {
+            return resolve()
+          }
+        })
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
